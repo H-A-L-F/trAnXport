@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class Login extends AppCompatActivity {
 
-    private boolean isPassVis = false;
+    private boolean isPassVis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +24,23 @@ public class Login extends AppCompatActivity {
         final ImageView passVis = findViewById(R.id.ic_passVis);
         final TextView signUpBtn = findViewById(R.id.btn_signup);
 
+        isPassVis = false;
+
+        ETpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        passVis.setImageResource(R.drawable.pass_hide);
+
         passVis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isPassVis) {
                     isPassVis = true;
 
-                    ETpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    ETpassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     passVis.setImageResource(R.drawable.pass_show);
                 } else {
                     isPassVis = false;
 
-                    ETpassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    ETpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     passVis.setImageResource(R.drawable.pass_hide);
                 }
 

@@ -92,7 +92,7 @@ public class OTPVerification extends AppCompatActivity {
 
     private void startCountDownTimer() {
         resendEnabled = false;
-        resendBtn.setTextColor(Color.parseColor("#990000000"));
+        resendBtn.setTextColor(Color.parseColor("#99000000"));
 
         new CountDownTimer(resendCd * 1000, 1000) {
 

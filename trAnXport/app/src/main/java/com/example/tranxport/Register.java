@@ -32,18 +32,28 @@ public class Register extends AppCompatActivity {
         final AppCompatButton signUpBtn = findViewById(R.id.btn_signup);
         final TextView signInBtn = findViewById(R.id.btn_signIn);
 
+        isPassVis = false;
+
+        ETpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        passIcon.setImageResource(R.drawable.pass_hide);
+
+        isConfPassVis = false;
+
+        ETconfPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        confPassIcon.setImageResource(R.drawable.pass_hide);
+
         passIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isPassVis) {
                     isPassVis = true;
 
-                    ETpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    ETpassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     passIcon.setImageResource(R.drawable.pass_show);
                 } else {
                     isPassVis = false;
 
-                    ETpassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    ETpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     passIcon.setImageResource(R.drawable.pass_hide);
                 }
 
@@ -58,14 +68,15 @@ public class Register extends AppCompatActivity {
                 if (!isConfPassVis) {
                     isConfPassVis = true;
 
-                    ETconfPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    ETconfPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                     confPassIcon.setImageResource(R.drawable.pass_show);
                 } else {
                     isConfPassVis = false;
 
-                    ETconfPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    ETconfPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     confPassIcon.setImageResource(R.drawable.pass_hide);
                 }
+
 
                 //move cursor to last text
                 ETconfPassword.setSelection(ETconfPassword.length());
@@ -89,7 +100,7 @@ public class Register extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(Register.this, Login.class));
             }
         });
     }
