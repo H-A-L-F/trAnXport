@@ -96,7 +96,7 @@
             android:layout_marginEnd="20dp"
             android:adjustViewBounds="true"
             android:padding="10dp"
-            android:src="@drawable/passVisible"
+            android:src="@drawable/pass_show"
             android:id="@+id/ic_passVis"/>
 
     </RelativeLayout>
@@ -128,7 +128,7 @@
             android:layout_marginEnd="20dp"
             android:adjustViewBounds="true"
             android:padding="10dp"
-            android:src="@drawable/passVisible"
+            android:src="@drawable/pass_show"
             android:id="@+id/ic_confPassVis"/>
 
     </RelativeLayout>
@@ -149,7 +149,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_marginTop="40dp" >
 
         <TextView

@@ -31,12 +31,12 @@ public class Login extends AppCompatActivity {
                     isPassVis = true;
 
                     ETpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    passVis.setImageResource(R.drawable.passVisible);
+                    passVis.setImageResource(R.drawable.pass_show);
                 } else {
                     isPassVis = false;
 
                     ETpassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    passVis.setImageResource(R.drawable.passInvis);
+                    passVis.setImageResource(R.drawable.pass_hide);
                 }
 
                 //move cursor to last text
