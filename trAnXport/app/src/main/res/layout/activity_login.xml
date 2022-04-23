@@ -65,7 +65,7 @@
             android:layout_marginEnd="20dp"
             android:adjustViewBounds="true"
             android:padding="10dp"
-            android:src="@drawable/view"
+            android:src="@drawable/passVisible"
             android:id="@+id/ic_passVis"/>
 
     </RelativeLayout>
