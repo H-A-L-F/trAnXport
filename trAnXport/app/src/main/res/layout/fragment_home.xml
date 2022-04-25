@@ -208,6 +208,251 @@
 
     </GridLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="40dp"
+            android:paddingHorizontal="20dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:text="Nearby"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#ff000000" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="wrap_content"
+                android:text="See all"
+                android:textSize="12sp"
+                android:textColor="@color/blue2" />
+
+        </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/round_back_white"
+            android:elevation="10dp" >
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bus_stop" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="Halte Busway Kuningan Timur"
+                    android:textSize="12sp"
+                    android:textColor="#ff000000"/>
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="150 km"
+                    android:maxLines="1"
+                    android:textSize="12sp"
+                    android:textColor="#ff000000"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="5dp"
+            android:background="@drawable/round_back_white"
+            android:elevation="10dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bus_stop" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="Halte Busway Kuningan Timur"
+                    android:textSize="12sp"
+                    android:textColor="#ff000000"/>
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="150 km"
+                    android:maxLines="1"
+                    android:textSize="12sp"
+                    android:textColor="#ff000000"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="5dp"
+            android:background="@drawable/round_back_white"
+            android:elevation="10dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bus_stop" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="Halte Busway Kuningan Timur"
+                    android:textSize="12sp"
+                    android:textColor="#ff000000"/>
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="150 km"
+                    android:maxLines="1"
+                    android:textSize="12sp"
+                    android:textColor="#ff000000"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="5dp"
+            android:background="@drawable/round_back_white"
+            android:elevation="10dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bus_stop" />
+            
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="Halte Busway Kuningan Timur"
+                    android:textSize="12sp"
+                    android:textColor="#ff000000"/>
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="150 km"
+                    android:maxLines="1"
+                    android:textSize="12sp"
+                    android:textColor="#ff000000"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </GridLayout>
 
 </LinearLayout>
