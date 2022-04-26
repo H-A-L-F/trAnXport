@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -16,11 +17,14 @@ public class Register extends AppCompatActivity {
     private boolean isPassVis = false;
     private boolean isConfPassVis = false;
 
+    SharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        final EditText ETUsername = findViewById(R.id.ET_username);
         final EditText ETemail = findViewById(R.id.ET_email);
         final EditText ETmobile = findViewById(R.id.ET_mobile);
 
@@ -83,16 +87,23 @@ public class Register extends AppCompatActivity {
             }
         });
 
+
+
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final String getUsername = ETUsername.getText().toString();
+                final String getPass = ETpassword.getText().toString();
                 final String getMobileTxt = ETmobile.getText().toString();
                 final String getEmailTxt = ETemail.getText().toString();
 
+                // save to shared preferences
+                saveUser(getUsername, getEmailTxt, getPass, getMobileTxt);
+
                 // Open OTP Verification page and passing the data
                 Intent intent = new Intent(Register.this, OTPVerification.class);
-                intent.putExtra("mobile", getMobileTxt);
-                intent.putExtra("email", getEmailTxt);
+                intent.putExtra("mobile", getUsername);
+                intent.putExtra("email", getPass);
                 startActivity(intent);
             }
         });
@@ -103,5 +114,15 @@ public class Register extends AppCompatActivity {
                 startActivity(new Intent(Register.this, Login.class));
             }
         });
+    }
+
+    private void saveUser(String uname, String email, String password, String mobile) {
+        sp = getSharedPreferences("MySp", MODE_PRIVATE);
+        SharedPreferences.Editor spEditor = sp.edit();
+        spEditor.putString("username", uname);
+        spEditor.putString("email", email);
+        spEditor.putString("password", password);
+        spEditor.putString("mobile", mobile);
+        spEditor.apply();
     }
 }

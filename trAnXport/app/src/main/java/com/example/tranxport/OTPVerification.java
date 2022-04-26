@@ -2,11 +2,19 @@ package com.example.tranxport;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -21,13 +29,18 @@ public class OTPVerification extends AppCompatActivity {
     private TextView resendBtn;
     private AppCompatButton verifyBtn;
 
+    private String code;
     private boolean resendEnabled = false;
     private int resendCd = 60;
 
     private int selectedETPos = 0;
 
+    SharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityCompat.requestPermissions(OTPVerification.this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_SMS}, PackageManager.PERMISSION_GRANTED);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpverification);
 
@@ -57,6 +70,8 @@ public class OTPVerification extends AppCompatActivity {
         // by default open keyboard at otpEt1
         showKeyboard(otpEt1);
 
+        code = generateCode();
+        sendSMS(code);
         startCountDownTimer();
 
         resendBtn.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +79,8 @@ public class OTPVerification extends AppCompatActivity {
             public void onClick(View view) {
                 if(resendEnabled) {
                     // resend code
+                    code = generateCode();
+                    sendSMS(code);
 
                     // reset cd
                     startCountDownTimer();
@@ -77,7 +94,7 @@ public class OTPVerification extends AppCompatActivity {
                 final String generateOtp = otpEt1.getText().toString()+otpEt2.getText().toString()+otpEt3.getText().toString()+otpEt4.getText().toString();
 
                 if(generateOtp.length() == 4) {
-                    // otp verification
+                    if(generateOtp.equals(code)) success();
                 }
             }
         });
@@ -170,5 +187,40 @@ public class OTPVerification extends AppCompatActivity {
         } else {
             return super.onKeyUp(keyCode, event);
         }
+    }
+
+    public void success() {
+        insertUser();
+        startActivity(new Intent(OTPVerification.this, MainActivity.class));
+    }
+
+    public void insertUser() {
+        SQLiteDatabase db = DBOpenHelper.getInstance(this).getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        sp = getSharedPreferences("MySp", MODE_PRIVATE);
+        SharedPreferences.Editor spEditor = sp.edit();
+        cv.put(DBOpenHelper.USERNAME, sp.getString("username", null));
+        cv.put(DBOpenHelper.EMAIL, sp.getString("email", null));
+        cv.put(DBOpenHelper.PHONENUMBER, sp.getString("mobile", null));
+        cv.put(DBOpenHelper.PASSWORD, sp.getString("password", null));
+        db.insert(DBOpenHelper.ACCOUNT, null, cv);
+    }
+
+    public String generateCode() {
+        int a1 = (int) (Math.random() * 10);
+        int a2 = (int) (Math.random() * 10);
+        int a3 = (int) (Math.random() * 10);
+        int a4 = (int) (Math.random() * 10);
+
+        String a = Integer.toString(a1) + Integer.toString(a2) + Integer.toString(a3) + Integer.toString(a4);
+
+        return a;
+    }
+
+    public void sendSMS(String message) {
+        String phoneNum = "08977628421";
+
+        SmsManager mySmsManager = SmsManager.getDefault();
+        mySmsManager.sendTextMessage(phoneNum, null, message, null, null);
     }
 }
