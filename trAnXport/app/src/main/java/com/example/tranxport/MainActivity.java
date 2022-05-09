@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
                 case R.id.btn_map: {
-                    replaceFragment(new MapFragment());
+                    replaceFragment(new MapsFragment());
                     break;
                 }
                 case R.id.btn_profile: {

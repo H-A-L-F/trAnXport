@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ public class Login extends AppCompatActivity {
     String phoneNumber;
     String password;
     boolean canLogin = false;
+
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +67,8 @@ public class Login extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String username = ETuname.getText().toString();
-                final String password = ETpassword.getText().toString();
+                username = ETuname.getText().toString();
+                password = ETpassword.getText().toString();
                 if(username.isEmpty() || password.isEmpty()) {
                     Toast.makeText(Login.this, "Credentials Cannot Be Empty", Toast.LENGTH_SHORT).show();
                 }
@@ -103,7 +106,7 @@ public class Login extends AppCompatActivity {
 
                     if(canLogin) {
                         Toast.makeText(Login.this, "Login Success", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Login.this, MainActivity.class));
+                        success();
                         finish();
                     }
                     else {
@@ -119,5 +122,17 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this, Register.class));
             }
         });
+    }
+    public void success() {
+        sp = getSharedPreferences("MySp", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt("id", id);
+        editor.putString("username", username);
+        editor.putString("email", email);
+        editor.putString("mobile", phoneNumber);
+        editor.putString("password", password);
+        editor.apply();
+        startActivity(new Intent(Login.this, MainActivity.class));
+        finish();
     }
 }
